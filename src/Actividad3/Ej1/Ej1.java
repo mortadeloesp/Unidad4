@@ -12,14 +12,14 @@ public class Ej1 {
     }
 
     public static void reverso (int[] array) {
+        System.out.println("Array original: " + Arrays.toString(array));
 
         for (int i = 0; i <array.length / 2; i++) {
-            int ordenar = array[i];
-            array[i] = array[array.length -1 - i];
-            array[array.length -1 - i] = ordenar;
-            for (int u = 0; u <array.length; u++) {
-                System.out.println("Array reverso: " + array);
-            }
+            int ordenar = array[i]; //Variable temporal
+            array[i] = array[array.length -1 - i]; //Remplazar con el elemento opuesto
+            array[array.length - 1 - i] = ordenar;
+
         }
+        System.out.println("Array revertido: " + Arrays.toString(array) );
     }
 }

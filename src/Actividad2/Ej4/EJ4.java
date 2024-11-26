@@ -18,7 +18,7 @@ public class EJ4 {
             }
         }
 
-        // Imprimimos el máximo
+        // Imprimimos el minimo
         System.out.println("El mínimo de la colección es: " + minimo);
     }
 }
