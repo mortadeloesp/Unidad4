@@ -5,10 +5,10 @@ import java.util.Arrays;
 public class Ej1 {
     public static void main(String[] args) {
 
-      int[] noReverso = {-10, -5, 0, 5, 10};
+      int[] noReverso = {-10, -5, 0, 5, 10, 50, 70};
 
          reverso(noReverso);
-
+        System.out.println("Array revertido: " + Arrays.toString(noReverso));
     }
 
     public static void reverso (int[] array) {
@@ -20,6 +20,5 @@ public class Ej1 {
             array[array.length - 1 - i] = ordenar;
 
         }
-        System.out.println("Array revertido: " + Arrays.toString(array) );
     }
 }

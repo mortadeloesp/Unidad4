@@ -1,62 +1,73 @@
-package Actividad3.EJ2;
+package Actividad3.Ej3;
+
+import Actividad3.EJ2.ArrayOperations;
 
 import java.util.Arrays;
 
-public class ArrayOperations {
-
+public class ArrayOperations2 {
     public static void main(String[] args) {
         // Creamos un array de ejemplo
         int[] array = {1, 2, 3, 4, 5};
+        int[] arrayplus = new int[array.length];
 
-        // Imprimir el array original
+        // a) Imprimir el array original
         System.out.print("Array original: ");
-        ArrayOperations.print(array);
+        ArrayOperations2.print(array);
 
-        // a) Invertir el array
-        ArrayOperations.reverse(array);
+        // b) Invertir el array
+        ArrayOperations2.reverse(array);
         System.out.print("Array invertido: ");
-        ArrayOperations.print(array);
+        ArrayOperations2.print(array);
 
-        // b) Encontrar el máximo
-        int max = ArrayOperations.max(array);
+        // c) Encontrar el máximo
+        int max = ArrayOperations2.max(array);
         System.out.println("Máximo del array: " + max);
 
-        // c) Encontrar el mínimo
-        int min = ArrayOperations.min(array);
+        // d) Encontrar el mínimo
+        int min = ArrayOperations2.min(array);
         System.out.println("Mínimo del array: " + min);
 
-        // d) Sumar los elementos del array
-        int sum = ArrayOperations.sum(array);
+        // e) Sumar los elementos del array
+        int sum = ArrayOperations2.sum(array);
         System.out.println("Suma del array: " + sum);
 
-        // e) Comparar dos arrays (igualdad exacta)
-        int[] array2 = {5, 4, 3, 2, 1};
-        boolean areEqual = ArrayOperations.equals(array, array2);
+        // f) Comparar dos arrays (igualdad exacta)
+        int[] array2 = {1, 2, 3, 4, 5};
+        boolean areEqual = ArrayOperations2.equals(array, array2);
         System.out.println("¿Los arrays son iguales? " + areEqual);
 
-        // f) Comparar dos arrays sin importar el orden
-        boolean areEqualWithoutOrder = ArrayOperations.equalsWithoutOrder(array, array2);
+        // g) Comparar dos arrays sin importar el orden
+        boolean areEqualWithoutOrder = ArrayOperations2.equalsWithoutOrder(array, array2);
         System.out.println("¿Los arrays son iguales sin importar el orden? " + areEqualWithoutOrder);
 
-        // g) Verificar si un número está en el array
-        boolean isNumberOnArray = ArrayOperations.isArrayOn(array, 3);
+        // h) Verificar si un número está en el array
+        boolean isNumberOnArray = ArrayOperations2.isArrayOn(array, 3);
         System.out.println("¿El número 3 está en el array? " + isNumberOnArray);
 
-        // h) Ordenar el array
-        ArrayOperations.sort(array);
+        // i) Ordenar el array
+        ArrayOperations2.sort(array);
         System.out.print("Array ordenado: ");
-        ArrayOperations.print(array);
+        ArrayOperations2.print(array);
 
-        // i) Copiar el array
+        // j) Copiar el array
         int[] arrayCopy = new int[array.length];
-        ArrayOperations.copy(array, arrayCopy);
+        ArrayOperations2.copy(array, arrayCopy);
         System.out.print("Array copiado: ");
-        ArrayOperations.print(arrayCopy);
+        ArrayOperations2.print(arrayCopy);
 
-        // j) Eliminar números impares (poner 0 en su lugar)
-        ArrayOperations.removeOddNumbers(array);
+        // k) Eliminar números impares (poner 0 en su lugar)
+        ArrayOperations2.removeOddNumbers(array);
         System.out.print("Array después de eliminar los números impares: ");
-        ArrayOperations.print(array);
+        ArrayOperations2.print(array);
+
+        // l) imprimir los elementos del array que estén dentro del rango inicio y fin ambos inclusive
+
+
+        System.out.print("Elementos dentro del array: ");
+        ArrayOperations2.printRange(arrayplus, 1, 4);
+
+
+
     }
 
 
@@ -118,21 +129,26 @@ public class ArrayOperations {
 
     // Método f) Comparar dos arrays (igualdad exacta)
     public static boolean equals(int[] array1, int[] array2) {
+        boolean falso = false;
+        boolean verdadero = true;
+
         if (array1.length != array2.length) {
-            return false;
+            return falso;
         }
         for (int i = 0; i < array1.length; i++) {
             if (array1[i] != array2[i]) {
-                return false;
+                return falso;
             }
         }
-        return true;
+        return verdadero;
     }
 
     // Método g) Comparar dos arrays sin importar el orden
     public static boolean equalsWithoutOrder(int[] array1, int[] array2) {
+        boolean falso = false;
+
         if (array1.length != array2.length) {
-            return false;
+            return falso;
         }
 
         int[] sortedArray1 = array1.clone();
@@ -145,7 +161,7 @@ public class ArrayOperations {
         // Comparar los arrays ordenados
         for (int i = 0; i < sortedArray1.length; i++) {
             if (sortedArray1[i] != sortedArray2[i]) {
-                return false;
+                return falso;
             }
         }
         return true;
@@ -153,9 +169,10 @@ public class ArrayOperations {
 
     // Método h) Verificar si un array contiene un número
     public static boolean isArrayOn(int[] array, int number) {
+        boolean dentro = true;
         for (int num : array) {
             if (num == number) {
-                return true;
+                return dentro;
             }
         }
         return false;
@@ -177,7 +194,7 @@ public class ArrayOperations {
     // Método j) Copiar el array de origen en el array destino
     public static void copy(int[] src, int[] dst) {
         if (src.length != dst.length) {
-            throw new IllegalArgumentException("Los arrays deben tener el mismo tamaño.");
+            System.out.println("Tienen que tener el la mis longitud.");
         }
         for (int i = 0; i < src.length; i++) {
             dst[i] = src[i];
@@ -192,5 +209,26 @@ public class ArrayOperations {
             }
         }
     }
+
+    //Metodo l) imprimir los elementos del array que estén dentro del rango inicio y fin ambos inclusive.
+    public static void printRange(int[] array, int inicio, int fin) {
+
+        // Verificar si los índices están dentro del rango
+        if (inicio < 0 || fin >= array.length || inicio > fin) {
+            System.out.println("El índice " + (inicio < 0 ? inicio : (fin >= array.length ? fin : "fuera de rango")) + " excede los límites del array.");
+            return;
+        }
+
+        // Imprimir los elementos dentro del rango
+        System.out.print("[");
+        for (int i = inicio; i <= fin; i++) {
+            System.out.print(array[i]);
+            if (i < fin) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
 }
+
 
